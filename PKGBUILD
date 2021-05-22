@@ -1,10 +1,13 @@
-# Maintainer: Kevin Del Castillo <quebin31@gmail.com>
-# Contributor: dchusovitin <dchusovitin@gmail.com>
+# Maintainer: Mohammad Yousuf Minhaj Zia <yzia2000@gmail.com>
 
 _pkgname=neovim
 _pkgver=0.5.0
-pkgname=neovim-nightly-bin
-pkgver=0.5.0+dev+1321+gc57a85d53
+pkgname=neovim-nightly-latest
+pkgver=0.5.0+dev+1345+g6dd04ed5f
+pkgver() {
+  ver=$(curl "https://api.github.com/repos/neovim/neovim/releases" | tr '\n' ' ' | grep -oP '(?<="NVIM )[^"]+dev[^"]+(?=",)' | sed "s/-/+/g")
+  echo $ver
+}
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs - Nightly Builds'
 arch=('x86_64')
